@@ -1,10 +1,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Modal.css";
-import InputRow from "./InputRow";
 
 function Modal({ setOpenModal }) {
-  const [count, setCount] = useState([1]);
-  const [inputUrl, setInputUrl] = useState("");
+  const [inputs, setInputs] = useState([{ role: "", location: "" }]);
+  const [companyUrl, setCompanyUrl] = useState("");
+
+  function handleInputChange(index, key, value) {
+    const newInputs = [...inputs];
+    newInputs[index][key] = value;
+    setInputs(newInputs);
+  }
+
+  function handleAddInput() {
+    if (!inputs[0].role || !inputs[0].location)
+      return alert("Please Enter values in 1st row First");
+
+    setInputs([...inputs, { role: "", location: "" }]);
+  }
+
+  function handleSave() {
+    if (!companyUrl) return alert("Enter the URL Please");
+    if (!inputs[0].role || !inputs[0].location)
+      return alert("Please Enter values atleast in 1 row or in 1st row");
+
+    console.log("Company URL:", companyUrl);
+    console.log("Inputs:", inputs);
+  }
 
   const ref = useRef(null);
 
@@ -34,42 +55,58 @@ function Modal({ setOpenModal }) {
             X
           </button>
         </div>
-        <div className="title">
-          <label htmlFor="URL" className="label">
-            Enter company URL
+        <div className="Url-container">
+          <label className="text" htmlFor="companyUrl">
+            Company URL
           </label>
           <input
             className="input"
-            id="URL"
-            value={inputUrl}
-            onChange={(e) => setInputUrl(e.target.value)}
             type="text"
-            placeholder="Enter URL"
+            id="companyUrl"
+            value={companyUrl}
+            placeholder="Enter URL here"
+            onChange={(e) => setCompanyUrl(e.target.value)}
           />
         </div>
-        <div className="body">
-          {count.map((c, i) => {
-            return <InputRow key={i} />;
-          })}
-        </div>
-        <div className="addBtn">
-          <button
-            onClick={() => setCount((prev) => [...prev, 1])}
-            className="btn"
-          >
+        <div className="input-container">
+          <div className="inputs-container">
+            {inputs.map((input, index) => (
+              <div className="inp-container" key={index}>
+                <input
+                  className="input"
+                  placeholder="Role"
+                  type="text"
+                  id={`role-${index}`}
+                  value={input.role}
+                  onChange={(e) =>
+                    handleInputChange(index, "role", e.target.value)
+                  }
+                />
+
+                <input
+                  placeholder="location"
+                  className="input"
+                  type="text"
+                  id={`location-${index}`}
+                  value={input.location}
+                  onChange={(e) =>
+                    handleInputChange(index, "location", e.target.value)
+                  }
+                />
+              </div>
+            ))}
+          </div>
+          <button className="addBtn" onClick={handleAddInput}>
             +
           </button>
         </div>
         <div className="footer">
-          <button
-            onClick={() => {
-              setOpenModal(false);
-            }}
-            id="cancelBtn"
-          >
+          <button className="btn CloseBtn" onClick={() => setOpenModal(false)}>
             Cancel
           </button>
-          <button>Save</button>
+          <button className="btn" onClick={handleSave}>
+            Save
+          </button>
         </div>
       </div>
     </div>

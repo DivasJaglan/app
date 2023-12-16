@@ -19,10 +19,70 @@
   padding: 25px;
 }
 
-.modalContainer .title {
-  display: inline-block;
-  text-align: center;
-  margin-top: 10px;
+.Url-container {
+  padding: 30px;
+  margin: 10px;
+  display: flex;
+  gap: 60px;
+  align-items: center;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  gap: 10px;
+
+  height: 900px;
+}
+
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  gap: 10px;
+
+  height: 900px;
+}
+
+.text {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.input {
+  padding: 5px;
+  width: 200px;
+  font-size: 15px;
+}
+
+.inp-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer {
+  display: flex;
+  margin-top: 20px;
+  gap: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  padding: 5px;
+  width: 80px;
+  font-size: 20px;
+  border-radius: 5px;
+}
+
+.CloseBtn {
+  background-color: rgb(203, 49, 49);
+  color: #fff;
 }
 
 .titleCloseBtn {
@@ -37,7 +97,20 @@
   cursor: pointer;
 }
 
-.modalContainer .body {
+.addBtn {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  background-color: rgb(54, 54, 219);
+  color: #fff;
+  padding: 5px;
+  font-size: 20px;
+  border-radius: 6px;
+  width: 70%;
+}
+
+/* .modalContainer .body {
   flex: 50%;
   justify-content: center;
   align-items: center;
@@ -53,7 +126,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
+} 
 
 .modalContainer .footer button {
   width: 150px;
@@ -71,19 +144,19 @@
   background-color: crimson;
 }
 
-.label {
+label {
   font-size: 20px;
   margin-right: 10px;
 }
 
-.input {
+input {
   padding: 2px 5px;
   margin: 5px;
   font-size: 15px;
 }
 
 .addBtn {
-  /* align-items: center; */
+  align-items: center;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -97,4 +170,4 @@
 .item {
   display: grid;
   grid-template-columns: 1fr 1fr;
-}
+} */
